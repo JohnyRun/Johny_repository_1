@@ -6,6 +6,11 @@ from scapy.all import *
 
 
 def generate_random_mac_ip(iface,count):
+	'''
+	Функция генерит пакеты со случайными mac/ip-адресами
+	iface - интерфейс, куда необходимо отправлять пакеты
+	count - число пакетов
+	'''
 	for i in range(1,count):
 		sendp(Ether(src=RandMAC('*:*:*:*:*:*') ,dst=RandMAC('*:*:*:*:*:*'))/IP(src=RandIP('*.*.*.*'),dst=RandIP('*.*.*.*')),iface=iface,verbose=False,count=count)
 
